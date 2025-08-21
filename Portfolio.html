@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>川口 拓郎 - ゲームプログラマーポートフォリオ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a; /* 全体の背景を黒に */
+            color: #e0e0e0; /* 文字色を明るいグレーに */
+        }
+        .container {
+            max-width: 960px; /* コンテナの最大幅を固定 */
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .header {
+            background-color: #282828; /* ヘッダーの背景色を少し明るい黒に */
+            color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+        }
+        .section {
+            background-color: #222222; /* 各セクションの背景色をさらに明るい黒に */
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+        }
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #4A90E2; /* タイトルは青のまま */
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #4A90E2;
+            padding-bottom: 0.5rem;
+        }
+        .subsection-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #e0e0e0; /* サブタイトルも明るいグレーに */
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #3a3a3a; /* テーブルの罫線を調整 */
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #333333; /* テーブルヘッダーの背景を調整 */
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+        /* image-gallery は、ローカル画像パスが使われているため、
+           ウェブ上では画像が表示されません。
+           代わりにテキストで説明するか、オンラインの画像URLに置き換える必要があります。 */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+            /* 画像が表示されないため、レイアウトを調整 */
+            grid-template-columns: 1fr; /* 1列表示に */
+        }
+        .image-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* 画像が表示されない場合の代替表示 */
+            background-color: #444;
+            color: #bbb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .code-block {
+            background-color: #2d2d2d; /* コードブロックの背景色を調整 */
+            color: #f8f8f2; /* コードの文字色を明るい色に */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto; /* 横スクロールを維持 */
+            font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+        .github-link {
+            display: inline-block;
+            background-color: #555; /* GitHubボタンの色を調整 */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .github-link:hover {
+            background-color: #777;
+        }
+        .note {
+            background-color: #3a3a1a; /* 注意書きの背景色を調整 */
+            border-left: 4px solid #ffcc00;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            color: #eeeeaa;
+        }
+        .table-of-contents ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .table-of-contents li {
+            margin-bottom: 0.5rem;
+        }
+        .table-of-contents a {
+            color: #4A90E2; /* 目次リンクは青のまま */
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .table-of-contents a:hover {
+            text-decoration: underline;
+        }
+        /* 動画プレースホルダーのスタイルを調整 */
+        .video-placeholder-light {
+            background-color: #222222; /* 動画プレースホルダーの背景色を調整 */
+            color: #e0e0e0;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="text-4xl font-bold mb-2">Game Programmer Portfolio</h1>
+            <p class="text-xl">川口 拓郎 (Takuro Kawaguchi) / 2025年6月</p>
+            <p class="text-lg mt-4">『MysterySolvingDungeon』</p>
+        </header>
+
+        <!-- Table of Contents Section -->
+        <section class="section table-of-contents">
+            <h2 class="section-title">目次</h2>
+            <ul>
+                <li><a href="#game-introduction">1. ゲーム紹介・プロジェクト概要</a></li>
+                <li><a href="#item-introduction-1">2-1 アイテム紹介 その1</a></li>
+                <li><a href="#item-introduction-2">2-2 アイテム紹介 その2</a></li>
+                <li><a href="#game-video">ゲーム紹介動画</a></li>
+                <li><a href="#library-list">ライブラリ一覧：演出・物理・ユーティリティ編</a></li>
+                <li><a href="#modules-used">利用したモジュールについて</a></li>
+                <li><a href="#example-code">ライブラリ一覧：演出・物理・ユーティリティ編 (主な使用例コード付き)</a></li>
+            </ul>
+        </section>
+
+        <!-- Game Introduction Section -->
+        <section class="section" id="game-introduction">
+            <h2 class="section-title">1. ゲーム紹介・プロジェクト概要</h2>
+            <p class="mb-4">
+                『MysterySolvingDungeon』は、プレイヤーが制限時間内に複数の謎を解き、銅像をゴールまで運ぶことを目的とした謎解きアクションゲームです。
+            </p>
+            <p class="mb-4">
+                本作は Unreal Engine 5 を使用し、謎解き条件やマップ構成にこだわって設計されています。
+            </p>
+            <h3 class="subsection-title">ゲームの主なギミック</h3>
+            <ul class="list-disc list-inside space-y-1 ml-4">
+                <li>🔥 火を灯す／消すことで進行ルートが変化。</li>
+                <li>⏱️ 制限時間内に複数のステップを踏んでゴールを目指す。</li>
+                <li>🎨 特定の色のオブジェクトを正しい場所に配置してドアを開ける</li>
+            </ul>
+            <p class="mt-4">
+                プレイヤーは 探索 🧭 と 論理思考 🧠 を駆使して、各ステージの攻略に挑みます。
+            </p>
+            <p class="mt-4">
+                この作品は、2024年12月18日〜2025年1月24日までの学習成果を形にすることを目的として制作しました。制限時間は25分です。
+            </p>
+
+            <h3 class="subsection-title">プレイヤー層と想定クリア時間</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>プレイヤー層</th>
+                            <th>プレイ状況</th>
+                            <th>想定クリア時間</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>制作者・ベテラン</td>
+                            <td>最適ルート・謎解き内容を全て把握済み</td>
+                            <td>約20分</td>
+                        </tr>
+                        <tr>
+                            <td>中級プレイヤー</td>
+                            <td>過去に類似ゲーム経験あり</td>
+                            <td>約23〜25分 (ギリギリ)</td>
+                        </tr>
+                        <tr>
+                            <td>初見プレイヤー</td>
+                            <td>ゲーム・謎解きともに初挑戦</td>
+                            <td>30〜45分ほど</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note mt-6">
+                <p><strong>Note:</strong> このプロジェクトの詳細は、GitHubでもご確認いただけます。</p>
+                <a href="https://github.com/taku37817/MysterySolving" target="_blank" class="github-link">
+                    GitHubリポジリを見る
+                </a>
+                <p class="mt-2 text-sm">「taku37817/MysterySolving」で検索可能です。</p>
+            </div>
+        </section>
+
+        <!-- Item Introduction Section -->
+        <section class="section" id="item-introduction-1">
+            <h2 class="section-title">2-1 アイテム紹介 その1</h2>
+            <p class="mb-4">
+                以下の3種のアイテムは、右側の石ゲートを開閉するために使用されます。
+            </p>
+            <div class="image-gallery">
+                <!-- ローカルパスの画像はウェブ上では表示されません。代わりに代替テキストが表示されます。 -->
+                <img src="C:\Users\gtchi\OneDrive\画像\MysterySolving「ポートフォリオ画像」\アイテム紹介(スイッチ関連).png" alt="アイテム紹介（スイッチ関連）の画像">
+            </div>
+
+
+        </section>
+
+        <section class="section" id="item-introduction-2">
+            <h2 class="section-title">2-2 アイテム紹介 その2</h2>
+            <div class="image-gallery">
+                <!-- ローカルパスの画像はウェブ上では表示されません。代わりに代替テキストが表示されます。 -->
+                <img src="C:\Users\gtchi\OneDrive\画像\MysterySolving「ポートフォリオ画像」\アイテム紹介(カギ・ロウソク).png" alt="アイテム紹介（カギ・ロウソク）の画像">
+            </div>
+        </section>
+
+
+        <!-- Game Play Video Section -->
+        <section class="section" id="game-video">
+            <h2 class="section-title">ゲーム紹介動画</h2>
+         <p class="mb-4" style="font-size: 1.5em;">動画の時間は3:33となります。<span style="color: red;">※音量に注意してください！</span></p>
+           <video src= "C:\Users\gtchi\Videos\3D Game MysterySolvingDungeon ゲーム紹介（仮）.mp4" controls></video>
+            </p>
+        </section>
+
+        <!-- Used Modules Section -->
+        <section class="section" id="modules-used">
+            <h2 class="section-title">利用したモジュールについて</h2>
+            <p class="mb-4">
+                こちらは、実際に使用モジュールを登録したときのコード (Build.cs) です。
+            </p>
+            <div class="code-block">
+                <pre><code>PublicDependencyModuleNames.AddRange(new string[] {
+    "Core", "CoreUObject", "Engine", "InputCore",
+    "HeadMountedDisplay", "UMG", "PhysicsCore",
+    "Niagara", "Slate", "SlateCore"
+});</code></pre>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>モジュール名</th>
+                            <th>説明</th>
+                            <th>実際に使った例(用途)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Core</td>
+                            <td>UEの基本型やマクロなどを含む最小構成ライブラリ</td>
+                            <td>全てのC++クラスで基礎的に使用</td>
+                        </tr>
+                        <tr>
+                            <td>CoreUObject</td>
+                            <td>UObjectやGC、リフレクションなどを提供</td>
+                            <td>アクターの継承やオブジェクト生成で使用</td>
+                        </tr>
+                        <tr>
+                            <td>Engine</td>
+                            <td>アクター・ワールド・コンポーネント等の主要機能</td>
+                            <td>アクター生成・移動・Tick処理などで使用</td>
+                        </tr>
+                        <tr>
+                            <td>InputCore</td>
+                            <td>入力制御全般(バインド、マッピング)</td>
+                            <td>キー入力処理 (マウス左クリックorEキーで持つ・離す)</td>
+                        </tr>
+                        <tr>
+                            <td>HeadMounted Display</td>
+                            <td>VR/AR向けHMDデバイス制御用</td>
+                            <td>将来的な拡張を見越して追加</td>
+                        </tr>
+                        <tr>
+                            <td>UMG</td>
+                            <td>ユーザーインターフェース構築用</td>
+                            <td>音量スライダーやヒントUIの作成</td>
+                        </tr>
+                        <tr>
+                            <td>PhysicsCore</td>
+                            <td>物理演算(剛体、衝突)のベース機能</td>
+                            <td>像の落下判定・衝突判定処理</td>
+                        </tr>
+                        <tr>
+                            <td>Niagara</td>
+                            <td>高性能VFX(Niagara)を扱うための機能群</td>
+                            <td>銅像配置時の光の演出に使用</td>
+                        </tr>
+                        <tr>
+                            <td>Slate</td>
+                            <td>低レベルUI構築フレームワーク (UMGの基礎)</td>
+                            <td>UIカスタム処理用に内部で必要</td>
+                        </tr>
+                        <tr>
+                            <td>SlateCore</td>
+                            <td>Slate フレームワークの基礎モジュール</td>
+                            <td>同上(内部依存として使用)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+<!-- Library List Section -->
+        <section class="section" id="library-list">
+            <h2 class="section-title">ライブラリ一覧③：演出・物理・ユーティリティ編（使用したライブラリ、41中11ご紹介）</h2>
+	　　
+	<a href= "https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#3-%EF%B8%8F-%E4%BD%BF%E7%94%A8%E6%8A%80%E8%A1%93%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB-%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E4%B8%80%E8%A6%A7%E3%82%B3%E3%83%BC%E3%83%89%E7%B4%B9%E4%BB%8B%E3%81%82%E3%82%8A" target="_blank" style="color: #3366cc;">ライブラリの詳細はこちらからご確認いただけます。</a>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>カテゴリ</th>
+                            <th>インクルード</th>
+                            <th>用途・説明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>アニメーション・VFX</td>
+                            <td>Animation/AnimInstance.h</td>
+                            <td>スケルタルメッシュのアニメ制御クラス</td>
+                        </tr>
+                        <tr>
+                            <td>アニメーション・VFX</td>
+                            <td>Niagara Component.h</td>
+                            <td>Niagara VFX用のコンポーネント</td>
+                        </tr>
+                        <tr>
+                            <td>アニメーション・VFX</td>
+                            <td>Niagara FunctionLibrary.h</td>
+                            <td>Niagaraエフェクトの生成・制御用関数群</td>
+                        </tr>
+                        <tr>
+                            <td>アニメーション・VFX</td>
+                            <td>Particles/ParticleSystemComponent.h</td>
+                            <td>Cascade系パーティクル用コンポーネント</td>
+                        </tr>
+                        <tr>
+                            <td>物理制御</td>
+                            <td>PhysicsEngine/PhysicsHandleComponent.h</td>
+                            <td>オブジェクトのつかみ・移動制御用ハンドル</td>
+                        </tr>
+                        <tr>
+                            <td>Kismet(便利機能)</td>
+                            <td>Kismet/GameplayStatics.h</td>
+                            <td>レベル遷移、音再生、アクター取得などのユーティリティ</td>
+                        </tr>
+                        <tr>
+                            <td>Kismet(便利機能)</td>
+                            <td>Kismet/KismetSystemLibrary.h</td>
+                            <td>システムレベルのユーティリティ (ログ出力など)</td>
+                        </tr>
+                        <tr>
+                            <td>エンジン関連</td>
+                            <td>Engine/World.h</td>
+                            <td>ワールド取得、アクター生成などに使用</td>
+                        </tr>
+                        <tr>
+                            <td>エンジン関連</td>
+                            <td>EngineUtils.h</td>
+                            <td>アクター検索・ループなどのユーティリティ</td>
+                        </tr>
+                        <tr>
+                            <td>サウンド・アセット関連</td>
+                            <td>Sound/SoundBase.h</td>
+                            <td>サウンドデータの基本クラス (BGM/SE)</td>
+                        </tr>
+                        <tr>
+                            <td>サウンド・アセット関連</td>
+                            <td>UObject/ConstructorHelpers.h</td>
+                            <td>アセット参照取得(Constructor時など)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+
+        <!-- Example Code Section -->
+        <section class="section" id="example-code">
+            <h2 class="section-title">ライブラリ一覧③：演出・物理・ユーティリティ編 (主な使用例コード付き)</h2>
+            <p class="mb-4">
+                「Niagara Component関連」のライブラリを使用した実際のコード一部をピックアップしました。詳細は隣のリンクからご確認できます。GitHub 「taku37817/MysterySolving」(検索可能)です。
+            </p>
+            <h3 class="subsection-title">Niagara Componentの処理例</h3>
+            <p class="mb-4">
+                CandlEerase Function() 内で UNiagara Component を取得し、SetVisibility() によりロウソクの炎を点火/消火で切り替える演出を実装しています。
+            </p>
+            <!-- ローカルパスの画像はウェブ上では表示されません。代替テキストが表示されます。 -->
+            <img src="C:\Users\gtchi\OneDrive\画像\MysterySolving「ポートフォリオ画像」\NiagaraComponent 使用例.png" alt="NiagaraComponent 使用例 コードスニペットの画像" class="code-block" style="background-color: #2d2d2d;">
+
+            <h3 class="subsection-title">謎解き条件とプレイヤーの状態について</h3>
+            <ul class="list-disc list-inside space-y-2 ml-4 mb-4">
+                <li><strong class="text-white">multipleConditioDoorMover->isAllConditionsMet</strong>: すべての最終ステージ前の部屋の条件（例：銅像がすべて正しい台に置かれているか）が満たされているかを確認します。詳細については、GitHubリポジトリ内の <a href="https://github.com/taku37817/MysterySolving/blob/RestorationBranch/Source/MysterySolving/MultipleConditioDoorMover.cpp" target="_blank" class="text-blue-400 hover:underline">`Source/MysterySolving/MultipleConditionDoorMover.cpp`</a> の27行目から79行目をご参照ください。</li>
+                <li><strong class="text-white">grabberComponent->isBronzeStatueGrabbed</strong>: プレイヤーが現在、銅像を掴んでいるかどうかの状態を示します。</li>
+            </ul>
+
+            <h3 class="subsection-title">像を持っているか、または配置されているかの処理</h3>
+            <!-- ローカルパスの画像はウェブ上では表示されません。代替テキストが表示されます。 -->
+            <img src="C:\Users\gtchi\OneDrive\画像\MysterySolving「ポートフォリオ画像」\CandlEeraseFunctionの実際の使用について.png" alt="CandlEeraseFunctionの実際の使用について コードスニペットの画像" class="code-block" style="background-color: #2d2d2d;">
+
+        </section>
+
+        <footer class="text-center text-gray-600 text-sm mt-8 pb-4">
+            <p>画像素材: pixabay 様 (Canva)</p>
+        </footer>
+    </div>
+</body>
+</html>
