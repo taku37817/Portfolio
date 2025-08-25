@@ -7,16 +7,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* 基本のボディスタイル */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #1a1a1a;
             color: #e0e0e0;
         }
+        /* コンテナの最大幅と中央揃え */
         .container {
             max-width: 960px;
             margin: 0 auto;
             padding: 2rem;
         }
+        /* ヘッダー/プロフィールセクションのスタイル */
         .header-profile {
             background-color: #282828;
             color: white;
@@ -29,6 +32,7 @@
             align-items: center;
             text-align: center;
         }
+        /* レスポンシブ対応：md以上の画面サイズでのヘッダー/プロフィールスタイル */
         @media (min-width: 768px) {
             .header-profile {
                 flex-direction: row;
@@ -36,6 +40,7 @@
                 text-align: left;
             }
         }
+        /* 各セクションの共通スタイル */
         .section {
             background-color: #222222;
             padding: 2rem;
@@ -43,6 +48,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             margin-bottom: 2rem;
         }
+        /* セクションタイトルのスタイル */
         .section-title {
             font-size: 1.75rem;
             font-weight: 700;
@@ -51,32 +57,38 @@
             border-bottom: 2px solid #4A90E2;
             padding-bottom: 0.5rem;
         }
-        .section-subtitle {
+        /* サブセクションタイトルのスタイル */
+        .subsection-title {
             font-size: 1.25rem;
             font-weight: 600;
             color: #4A90E2;
             margin-top: 1.5rem;
             margin-bottom: 1rem;
         }
+        /* メインコンテンツのレイアウト */
         .main-content {
             display: flex;
             flex-direction: column;
             gap: 2rem;
         }
+        /* レスポンシブ対応：lg以上の画面サイズでのメインコンテンツレイアウト */
         @media (min-width: 1024px) {
             .main-content {
                 flex-direction: row;
             }
         }
+        /* 左パネルのスタイル */
         .left-panel {
             flex: 1;
             display: flex;
             flex-direction: column;
             gap: 2rem;
         }
+        /* 右パネルのスタイル */
         .right-panel {
             flex: 1;
         }
+        /* スキル項目のスタイル */
         .skill-item {
             display: flex;
             align-items: center;
@@ -85,6 +97,7 @@
             background-color: #333333;
             margin-bottom: 0.5rem;
         }
+        /* スキルアイコンのスタイル */
         .skill-icon {
             width: 36px;
             height: 36px;
@@ -97,6 +110,7 @@
             color: #fff;
             margin-right: 0.75rem;
         }
+        /* 各スキルアイコンの背景色 */
         .bg-cpp { background-color: #004d99; }
         .bg-cs { background-color: #6a1a8c; }
         .bg-py { background-color: #3b76a0; }
@@ -111,11 +125,13 @@
         .bg-office { background-color: #1c4587; }
         .bg-vba { background-color: #0073e6; }
         .bg-video { background-color: #9b59b6; }
+        /* タイムライン項目のスタイル */
         .timeline-item {
             position: relative;
             padding-left: 20px;
             margin-bottom: 2rem;
         }
+        /* タイムラインマーカーのスタイル */
         .timeline-marker {
             position: absolute;
             left: 0;
@@ -125,19 +141,75 @@
             background-color: #4A90E2;
             border-radius: 50%;
         }
+        /* コードブロックのスタイル */
         .code-block {
             background-color: #2d2d2d;
             padding: 1rem;
             border-radius: 0.5rem;
             overflow-x: auto;
         }
+        /* テーブルの共通スタイル */
+        .lib-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 14px;
+            background-color: #1a1a1a;
+            color: white;
+        }
+        .lib-table th, .lib-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        .lib-table th {
+            background-color: #2a2a2a;
+            color: #fff;
+            font-weight: bold;
+        }
+        .lib-table tbody tr:nth-child(odd) {
+            background-color: #1a1a1a;
+        }
+        .lib-table tbody tr:nth-child(even) {
+            background-color: #222222;
+        }
+        .lib-table tbody tr:hover {
+            background-color: #444;
+        }
+        /* リンクの色とホバー時の下線 */
+        .text-blue-400 {
+            color: #60a5fa; /* 青色 */
+        }
+        .hover\:underline:hover {
+            text-decoration: underline; /* マウスを乗せた時に下線をつける */
+        }
+        /* ハイライト用の新しい色 */
+        .text-highlight {
+            color: #FFA500; /* 明るいオレンジ色 */
+        }
     </style>
 </head>
+
 <body class="bg-gray-900 text-gray-200 min-h-screen py-12 px-4">
     <div class="container">
-        <header class="header-profile">
+        <!-- 目次セクションの追加 -->
+        <section class="section" id="table-of-contents">
+            <h2 class="section-title">CONTENTS <span class="text-base text-gray-400 ml-2">目次</span></h2>
+            <nav>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li><a href="#header-profile" class="text-blue-400 hover:underline">0. 📖 自己紹介</a></li>
+                    <li><a href="#game-introduction" class="text-blue-400 hover:underline">1.🎮  ゲーム紹介・プロジェクト概要（開発資料・ゲーム動画含む）</a></li>
+                    <li><a href="#item-introduction" class="text-blue-400 hover:underline">2. 💎 アイテム紹介</a></li>
+                    <li><a href="#modules-used" class="text-blue-400 hover:underline">3. 🛠️ 実装技術の詳細</a></li>
+                    <li><a href="#library-list" class="text-blue-400 hover:underline">4. 🛠️ ライブラリ一覧</a></li>
+                </ul>
+            </nav>
+        </section>
+
+        <section class="section" id="header-profile">
             <img src="https://placehold.co/180x180/4a5568/a0aec0?text=Your+Photo" alt="プロフィール写真" class="w-40 h-40 rounded-full object-cover shadow-xl border-4 border-blue-400 md:mr-8 md:mb-0 mb-4">
             <div class="flex-1">
+                <h2 class="section-title">0. 📖 自己紹介</h2>
                 <h1 class="text-4xl font-extrabold text-blue-400 mb-2">川口 拓郎</h1>
                 <p class="text-xl font-light text-gray-300 mb-4">Takuro Kawaguchi - ゲームプログラマー</p>
                <div class="bg-black text-white p-4 rounded-md">
@@ -146,14 +218,17 @@
                     </p>
                 </div>
                 <div class="mt-4 text-gray-500 text-sm space-y-1">
-                    <p>最終学歴: 専門学校 (ゲーム開発学科) 中退</p>
+                    <p>最終学歴: 専門学校 (ゲーム開発学科) 中途退学</p>
                 </div>
             </div>
-        </header>
+            <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
+        </section>
 
         <div class="main-content">
             <div class="left-panel">
                 <section class="section">
+
+                    <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
                     <h2 class="section-title">ABOUT ME <span class="text-base text-gray-400 ml-2">わたしについて</span></h2>
                     <div class="text-gray-300 leading-relaxed text-sm md:text-base space-y-3">
                         <p>
@@ -166,33 +241,36 @@
                             このポートフォリオは、私の「**調べる力**」「**問題を解決する力**」、そして何より「**開発を最後までやり抜く力**」の証明です。将来的には、数学のスキルも磨きながら、ゲーム開発を通して人々に驚きと感動を届けたいと考えています。
                         </p>
                     </div>
+                    <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
                 </section>
                 
                 <section class="section">
+                    <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
+
                     <h2 class="section-title">SKILLS <span class="text-base text-gray-400 ml-2">技術スタック</span></h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="skill-item">
                             <div class="skill-icon bg-cpp">C++</div>
                             <div>
-                                <h4 class="font-semibold">C++ <span class="text-xs text-gray-400">（2年）</span></h4>
+                                <h4 class="font-semibold">C++ <span class="text-xs text-gray-400"></span></h4>
                             </div>
                         </div>
                         <div class="skill-item">
                             <div class="skill-icon bg-cs">C#</div>
                             <div>
-                                <h4 class="font-semibold">C# <span class="text-xs text-gray-400">（4年）</span></h4>
+                                <h4 class="font-semibold">C# <span class="text-xs text-gray-400"></span></h4>
                             </div>
                         </div>
                         <div class="skill-item">
                             <div class="skill-icon bg-py">Py</div>
                             <div>
-                                <h4 class="font-semibold">Python <span class="text-xs text-gray-400">（2年）</span></h4>
+                                <h4 class="font-semibold">Python <span class="text-xs text-gray-400"></span></h4>
                             </div>
                         </div>
                         <div class="skill-item">
                             <div class="skill-icon bg-js">JS</div>
                             <div>
-                                <h4 class="font-semibold">JavaScript <span class="text-xs text-gray-400">（1年）</span></h4>
+                                <h4 class="font-semibold">JavaScript <span class="text-xs text-gray-400"></span></h4>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -204,7 +282,7 @@
                         <div class="skill-item">
                             <div class="skill-icon bg-unity">Unty</div>
                             <div>
-                                <h4 class="font-semibold">Unity <span class="text-xs text-gray-400">（4年）</span></h4>
+                                <h4 class="font-semibold">Unity <span class="text-xs text-gray-400"></span></h4>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -222,26 +300,26 @@
                         <div class="skill-item">
                             <div class="skill-icon bg-vsc">VSCode</div>
                             <div>
-                                <h4 class="font-semibold">Visual Studio Code <span class="text-xs text-gray-400">（4年）</span></h4>
+                                <h4 class="font-semibold">Visual Studio Code <span class="text-xs text-gray-400"></span></h4>
                             </div>
                         </div>
                         <div class="skill-item">
                             <div class="skill-icon bg-vs">VS</div>
                             <div>
-                                <h4 class="font-semibold">Visual Studio <span class="text-xs text-gray-400">（4年）</span></h4>
+                                <h4 class="font-semibold">Visual Studio <span class="text-xs text-gray-400"></span></h4>
                             </div>
                         </div>
                         <div class="skill-item">
                             <div class="skill-icon bg-git">Git</div>
                             <div>
-                                <h4 class="font-semibold">GitHub / SourceTree <span class="text-xs text-gray-400">（3年）</span></h4>
+                                <h4 class="font-semibold">GitHub / SourceTree <span class="text-xs text-gray-400"></span></h4>
                             </div>
                         </div>
                         <div class="skill-item">
                             <div class="skill-icon bg-office">Office</div>
                             <div>
                                 <h4 class="font-semibold">Office製品</h4>
-                                <p class="text-xs text-gray-400">Excel（8年）、PowerPoint（8年）、Word（5年）</p>
+                                <p class="text-xs text-gray-400">Excel、PowerPoint、Word</p>
                             </div>
                         </div>
                         <div class="skill-item">
@@ -258,11 +336,13 @@
                             </div>
                         </div>
                     </div>
+                    <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
                 </section>
             </div>
 
             <div class="right-panel">
                 <section class="section">
+                    <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
                     <h2 class="section-title">WORK EXPERIENCE <span class="text-base text-gray-400 ml-2">経歴</span></h2>
                     <div class="relative pl-6 border-l-4 border-gray-600">
                         <div class="timeline-item">
@@ -320,16 +400,19 @@
                             <div class="timeline-marker"></div>
                             <p class="text-sm text-gray-400">2025年2月上旬～5月末</p>
                             <h3 class="font-bold text-blue-300 text-lg">Unrealengine・C++を利用して、3D謎解きゲーム自主制作『MysterySolvingDungeon』開発</h3>
-                            <p class="text-gray-300 text-sm">プレイヤーの状態管理、オブジェクトのインタラクション、UI連携など、複雑なロジックをC++で実装。<br>デバッグやバグ修正に多くの時間を費やしたが、完成までやり遂げることができたました。</p>
+                            <p class="text-gray-300 text-sm">プレイヤーの状態管理、オブジェクトのインタラクション、UI連携など、複雑なロジックをC++で実装。<br>デバッグやバグ修正に多くの時間を費やしたが、完成までやり遂げることができました。</p>
                             
                         </div>
                     </div>
+                    <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
                 </section>
             </div>
         </div>
         
         <section class="section" id="game-introduction">
-            <h2 class="section-title">1.🎮  ゲーム紹介・プロジェクト概要 </h2>
+
+            <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
+            <h2 class="section-title">1.🎮  ゲーム紹介・プロジェクト概要（開発資料・ゲーム動画含む） </h2>
             <h3 class="subsection-title">プロジェクト概要</h3>
             <p class="mb-4">
                 『MysterySolvingDungeon』は、プレイヤーが制限時間内に複数の謎を解き、銅像をゴールまで運ぶことを目的とした3D謎解きアクションゲームです。
@@ -380,42 +463,54 @@
                 <div class="note mt-6">
                     <p class="text-lg font-semibold text-blue-400">プロジェクトの全貌はこちらから！</p>
                     <p class="mb-2">
-                        このプロジェクトのコードや詳細な開発ドキュメントは、GitHubで公開しています。
-                        私の「調べる力」「問題を解決する力」をより詳しく見ていただけます！
+                        以下のリンクから各資料や、動画をご確認いただけます。
                     </p>
+                        <style>
+                            span {
+                            color: red; /* ここで文字色を赤に指定 */
+                            }
+                        </style>
+                    <body>
+
+                    <p>
+                        <span>※動画は3：33です。音量にご注意ください。</span>
+                    </p>
+
+                    </body>
                     <a href="https://github.com/taku37817/MysterySolving" target="_blank" class="inline-block bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
                         GitHubリポジトリを見る
+                    </a>
+                    <a href="開発資料について.html" target="_blank" class="inline-block bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                        開発資料を見る
+                    </a>
+                    <a href=https://youtu.be/XEyPULc-1as target="_blank" class="inline-block bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                        ゲーム紹介動画(Youtube)
                     </a>
                     <p class="mt-2 text-sm text-gray-500">※GitHubで「taku37817/MysterySolving」と検索してもアクセス可能です。</p>
                 </div>
                 <p class="mt-2 text-sm">「taku37817/MysterySolving」で検索可能です。</p>
             </div>
+            <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
         </section>
 
         <section class="section" id="item-introduction">
-            <h2 class="section-title">アイテム紹介</h2>
+            <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
+            <h2 class="section-title">2.💎 アイテム紹介</h2>
             <p class="mb-4">
                 ゲーム内の主要アイテムと、それらが果たす役割について紹介します。
             </p>
             <div class="image-gallery">
                 <img src="Image/アイテム紹介(スイッチ関連).png" alt="アイテム紹介（スイッチ関連）の画像">
+                <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
+
                 <img src="Image/アイテム紹介(カギ・ロウソク).png" alt="アイテム紹介（カギ・ロウソク）の画像">
             </div>
-            <p class="note mt-6 text-red-400">
-                <strong>※重要：</strong> 上記の画像はローカルパスのため、ウェブ上では表示されません。ご自身のウェブサーバーに画像をアップロードし、パスを修正してください。
-            </p>
-        </section>
-
-        <section class="section" id="game-video">
-            <h2 class="section-title">ゲーム紹介動画</h2>
-            <p class="mb-4 text-xl">動画時間：3分33秒 <span class="text-red-400">※音量に注意してください！</span></p>
-            <div class="video-container">
-                <video src="Movie/3D Game MysterySolvingDungeon ゲーム紹介（仮）.mp4" controls class="w-full"></video>
-            </div>
+            <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
         </section>
 
         <section class="section" id="modules-used">
-            <h2 class="section-title">実装技術の詳細</h2>
+            <h2 class="section-title">3.🛠️ 実装技術の詳細</h2>
+            <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
             <h3 class="subsection-title">利用したモジュール (Build.cs)</h3>
             <p class="mb-4">
                 プロジェクトで使用したUnreal Engineの主要なモジュール一覧です。
@@ -491,33 +586,140 @@
                 </table>
             </div>
             
-            <h3 class="subsection-title mt-8">主要なC++コードと実装解説</h3>
-            <p class="mb-4">
-                プロジェクトの中核となるC++コードの一部を抜粋して解説します。
-                コード全体はGitHubでご確認いただけます。
-            </p>
-            
-            <p class="mb-2"><strong>`NiagaraComponent` を使用した演出の例</strong></p>
-            <p class="mb-4 text-sm text-gray-400">
-                `CandlEerase()` 関数内で `UNiagaraComponent` を取得し、`SetVisibility()` を使ってロウソクの炎の表示を切り替えています。
-            </p>
-            <img src="Image/NiagaraComponent 使用例.png" alt="NiagaraComponent 使用例 コードスニペットの画像" class="code-block" style="background-color: #2d2d2d;">
-            
-            <p class="mt-6 mb-2"><strong>謎解き条件とプレイヤーの状態管理</strong></p>
-            <p class="mb-4 text-sm text-gray-400">
-                複数の条件が揃った時にドアを開けるロジックや、プレイヤーが像を持っているかどうかの状態管理についてです。
-            </p>
-            <ul class="list-disc list-inside space-y-2 ml-4 mb-4">
-                <li><strong class="text-white">`multipleConditioDoorMover->isAllConditionsMet`</strong>: 最終ステージ前の部屋の条件（例：銅像がすべて正しい台に置かれているか）が満たされているかをチェックします。詳細は <a href="https://github.com/taku37817/MysterySolving/blob/RestorationBranch/Source/MysterySolving/MultipleConditioDoorMover.cpp" target="_blank" class="text-blue-400 hover:underline">`MultipleConditionDoorMover.cpp`</a> の27～79行目をご覧ください。</li>
-                <li><strong class="text-white">`grabberComponent->isBronzeStatueGrabbed`</strong>: プレイヤーが現在、銅像を掴んでいるかどうかの状態を判定します。</li>
-            </ul>
-            <img src="Image/CandlEeraseFunctionの実際の使用について.png" alt="CandlEeraseFunctionの実際の使用について コードスニペットの画像" class="code-block" style="background-color: #2d2d2d;">
+            <section class="section" id="library-list">
+                <h2 class="section-title">4.🛠️ ライブラリ一覧③：演出・物理・ユーティリティ編（使用したライブラリ、41中11ご紹介）</h2>
+                <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
+                <p class="mb-4"><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#3-%EF%B8%8F-%E4%BD%BF%E7%94%A8%E6%8A%80%E8%A1%93%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB-%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E4%B8%80%E8%A6%8B%E3%82%B3%E3%83%BC%E3%83%89%E7%B4%B9%E4%BB%8B%E3%81%82%E3%82%8A" target="_blank" class="text-blue-400 hover:underline">ライブラリの詳細はこちらからご確認いただけます。</a></p>
+                <div class="table-container">
+                    <style>
+                        .lib-table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin-bottom: 20px;
+                            font-size: 14px;
+                            background-color: #1a1a1a;
+                            color: white;
+                        }
+                        .lib-table th, .lib-table td {
+                            padding: 12px;
+                            text-align: left;
+                            border-bottom: 1px solid #333;
+                        }
+                        .lib-table th {
+                            background-color: #2a2a2a;
+                            color: #fff;
+                            font-weight: bold;
+                        }
+                        .lib-table tbody tr:nth-child(odd) {
+                            background-color: #1a1a1a;
+                        }
+                        .lib-table tbody tr:nth-child(even) {
+                            background-color: #222222;
+                        }
+                        .lib-table tbody tr:hover {
+                            background-color: #444;
+                        }
+                    </style>
+                    <table class="lib-table">
+                        <thead>
+                            <tr>
+                                <th>カテゴリ</th>
+                                <th>インクルード</th>
+                                <th>用途・説明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>アニメーション・VFX</td>
+                                <td><code>Animation/AnimInstance.h</code></td>
+                                <td>スケルタルメッシュのアニメ制御クラス</td>
+                            </tr>
+                            <tr>
+                                <td>アニメーション・VFX</td>
+                                <td><code>Niagara Component.h</code></td>
+                                <td>Niagara VFX用のコンポーネント</td>
+                            </tr>
+                            <tr>
+                                <td>アニメーション・VFX</td>
+                                <td><code>Niagara FunctionLibrary.h</code></td>
+                                <td>Niagaraエフェクトの生成・制御用関数群</td>
+                            </tr>
+                            <tr>
+                                <td>アニメーション・VFX</td>
+                                <td><code>Particles/ParticleSystemComponent.h</code></td>
+                                <td>Cascade系パーティクル用コンポーネント</td>
+                            </tr>
+                            <tr>
+                                <td>物理制御</td>
+                                <td><code>PhysicsEngine/PhysicsHandleComponent.h</code></td>
+                                <td>オブジェクトのつかみ・移動制御用ハンドル</td>
+                            </tr>
+                            <tr>
+                                <td>Kismet(便利機能)</td>
+                                <td><code>Kismet/GameplayStatics.h</code></td>
+                                <td>レベル遷移、音再生、アクター取得などのユーティリティ</td>
+                            </tr>
+                            <tr>
+                                <td>Kismet(便利機能)</td>
+                                <td><code>Kismet/KismetSystemLibrary.h</code></td>
+                                <td>システムレベルのユーティリティ (ログ出力など)</td>
+                            </tr>
+                            <tr>
+                                <td>エンジン関連</td>
+                                <td><code>Engine/World.h</code></td>
+                                <td>ワールド取得、アクター生成などに使用</td>
+                            </tr>
+                            <tr>
+                                <td>エンジン関連</td>
+                                <td><code>EngineUtils.h</code></td>
+                                <td>アクター検索・ループなどのユーティリティ</td>
+                            </tr>
+                            <tr>
+                                <td>サウンド・アセット関連</td>
+                                <td><code>Sound/SoundBase.h</code></td>
+                                <td>サウンドデータの基本クラス (BGM/SE)</td>
+                            </tr>
+                            <tr>
+                                <td>サウンド・アセット関連</td>
+                                <td><code>UObject/ConstructorHelpers.h</code></td>
+                                <td>アセット参照取得(Constructor時など)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
+                <p class="mb-4">
+                ・以下の画像は「Niagara Component関連」のライブラリを使用した実際のコード一部をピックアップしました。
+               <style>
+                        .text-blue-400 {
+                            color: #60a5fa; /* 青色 */
+                        }
+                        .hover\:underline:hover {
+                            text-decoration: underline; /* マウスを乗せた時に下線をつける */
+                        }
+                    </style>
+
+                    <br>詳細は隣のリンクからご確認できます。GitHub <a href="https://github.com/taku37817/MysterySolving/blob/RestorationBranch/Source/MysterySolving/FinalMysterySolvingRoomClass.cpp" target="_blank" class="text-blue-400 hover:underline"><code>Source/MysterySolving/FinalMysterySolvingRoomClass.cpp</code></a>(検索可能)です。
+                </p>
+                <h3 class="subsection-title text-highlight">Niagara Componentの処理例</h3>
+                <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
+                <p class="mb-4">
+                CandlEerase Function() 内で UNiagara Component を取得し、SetVisibility() によりロウソクの炎を点火/消火で切り替える演出を実装しています。
+                </p>
+                <img src="C:\Users\gtchi\OneDrive\画像\MysterySolving「ポートフォリオ画像」\NiagaraComponent 使用例.png" alt="NiagaraComponent 使用例 コードスニペットの画像" class="code-block" style="background-color: #2d2d2d;">
+
+                <h3 class="subsection-title text-highlight">謎解き条件とプレイヤーの状態について</h3>
+                <ul class="list-disc list-inside space-y-2 ml-4 mb-4">
+                    <li><strong class="text-white">multipleConditioDoorMover->isAllConditionsMet</strong>: すべての最終ステージ前の部屋の条件（例：銅像がすべて正しい台に置かれているか）が満たされているかを確認します。詳細については、GitHubリポジトリ内の <a href="https://github.com/taku37817/MysterySolving/blob/RestorationBranch/Source/MysterySolving/MultipleConditioDoorMover.cpp" target="_blank" class="text-blue-400 hover:underline"><code>Source/MysterySolving/MultipleConditionDoorMover.cpp</code></a> の27行目から79行目をご参照ください。</li>
+                    <li><strong class="text-white">grabberComponent->isBronzeStatueGrabbed</strong>: プレイヤーが現在、銅像を掴んでいるかどうかの状態を示します。</li>
+                </ul>
+
+                <h3 class="subsection-title text-highlight">像を持っているか、または配置されているかの処理</h3>
+                <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
+                <img src="C:\Users\gtchi\OneDrive\画像\MysterySolving「ポートフォリオ画像」\CandlEeraseFunctionの実際の使用について.png" alt="CandlEeraseFunctionの実際の使用について コードスニペットの画像" class="code-block" style="background-color: #2d2d2d;">
+            </section>
+            <p class="mt-8 text-right"><a href="#table-of-contents" class="text-blue-400 hover:underline">目次に戻る</a></p>
         </section>
-
-        <footer class="text-center text-gray-600 text-sm mt-8 pb-4">
-            <p>画像素材: pixabay 様 (Canva)</p>
-        </footer>
     </div>
 </body>
 </html>
