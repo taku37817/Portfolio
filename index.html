@@ -9,25 +9,35 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a1a1a; /* 全体の背景を黒に */
-            color: #e0e0e0; /* 文字色を明るいグレーに */
+            background-color: #1a1a1a;
+            color: #e0e0e0;
         }
         .container {
-            max-width: 960px; /* コンテナの最大幅を固定 */
+            max-width: 960px;
             margin: 0 auto;
             padding: 2rem;
         }
-        .header {
-            background-color: #282828; /* ヘッダーの背景色を少し明るい黒に */
+        .header-profile {
+            background-color: #282828;
             color: white;
             padding: 2rem;
             border-radius: 0.75rem;
-            text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            .header-profile {
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+            }
         }
         .section {
-            background-color: #222222; /* 各セクションの背景色をさらに明るい黒に */
+            background-color: #222222;
             padding: 2rem;
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -36,245 +46,379 @@
         .section-title {
             font-size: 1.75rem;
             font-weight: 700;
-            color: #4A90E2; /* タイトルは青のまま */
+            color: #e0e0e0;
             margin-bottom: 1.5rem;
             border-bottom: 2px solid #4A90E2;
             padding-bottom: 0.5rem;
         }
-        .subsection-title {
+        .section-subtitle {
             font-size: 1.25rem;
             font-weight: 600;
-            color: #e0e0e0; /* サブタイトルも明るいグレーに */
+            color: #4A90E2;
             margin-top: 1.5rem;
             margin-bottom: 1rem;
         }
-        .table-container {
-            overflow-x: auto;
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-            border-radius: 0.5rem;
-            overflow: hidden;
+        @media (min-width: 1024px) {
+            .main-content {
+                flex-direction: row;
+            }
         }
-        th, td {
-            border: 1px solid #3a3a3a; /* テーブルの罫線を調整 */
-            padding: 0.75rem;
-            text-align: left;
+        .left-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
-        th {
-            background-color: #333333; /* テーブルヘッダーの背景を調整 */
-            font-weight: 600;
-            color: #e0e0e0;
+        .right-panel {
+            flex: 1;
         }
-        /* image-gallery は、ローカル画像パスが使われているため、
-           ウェブ上では画像が表示されません。
-           代わりにテキストで説明するか、オンラインの画像URLに置き換える必要があります。 */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
-            /* 画像が表示されないため、レイアウトを調整 */
-            grid-template-columns: 1fr; /* 1列表示に */
-        }
-        .image-gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            /* 画像が表示されない場合の代替表示 */
-            background-color: #444;
-            color: #bbb;
+        .skill-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            min-height: 100px;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-        .code-block {
-            background-color: #2d2d2d; /* コードブロックの背景色を調整 */
-            color: #f8f8f2; /* コードの文字色を明るい色に */
-            padding: 1rem;
+            padding: 0.75rem;
             border-radius: 0.5rem;
-            overflow-x: auto; /* 横スクロールを維持 */
-            font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
-            font-size: 0.875rem;
-            margin-top: 1rem;
-        }
-        .github-link {
-            display: inline-block;
-            background-color: #555; /* GitHubボタンの色を調整 */
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            margin-top: 1.5rem;
-            transition: background-color 0.3s ease;
-        }
-        .github-link:hover {
-            background-color: #777;
-        }
-        .note {
-            background-color: #3a3a1a; /* 注意書きの背景色を調整 */
-            border-left: 4px solid #ffcc00;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-top: 1.5rem;
-            color: #eeeeaa;
-        }
-        .table-of-contents ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .table-of-contents li {
+            background-color: #333333;
             margin-bottom: 0.5rem;
         }
-        .table-of-contents a {
-            color: #4A90E2; /* 目次リンクは青のまま */
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .table-of-contents a:hover {
-            text-decoration: underline;
-        }
-        /* 動画プレースホルダーのスタイルを調整 */
-        .video-placeholder-light {
-            background-color: #222222; /* 動画プレースホルダーの背景色を調整 */
-            color: #e0e0e0;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            text-align: center;
+        .skill-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 200px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #fff;
+            margin-right: 0.75rem;
+        }
+        .bg-cpp { background-color: #004d99; }
+        .bg-cs { background-color: #6a1a8c; }
+        .bg-py { background-color: #3b76a0; }
+        .bg-js { background-color: #f7df1e; color: #1a1a1a; }
+        .bg-ue { background-color: #3366cc; }
+        .bg-unity { background-color: #000; }
+        .bg-blender { background-color: #f57f17; }
+        .bg-gimp { background-color: #756a59; }
+        .bg-vsc { background-color: #007acc; }
+        .bg-vs { background-color: #5d2b7e; }
+        .bg-git { background-color: #333; }
+        .bg-office { background-color: #1c4587; }
+        .bg-vba { background-color: #0073e6; }
+        .bg-video { background-color: #9b59b6; }
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 2rem;
+        }
+        .timeline-marker {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            background-color: #4A90E2;
+            border-radius: 50%;
+        }
+        .code-block {
+            background-color: #2d2d2d;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-900 text-gray-200 min-h-screen py-12 px-4">
     <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-            <h1 class="text-4xl font-bold mb-2">Game Programmer Portfolio</h1>
-            <p class="text-xl">川口 拓郎 (Takuro Kawaguchi) / 2025年6月</p>
-            <p class="text-lg mt-4">『MysterySolvingDungeon』</p>
+        <header class="header-profile">
+            <img src="https://placehold.co/180x180/4a5568/a0aec0?text=Your+Photo" alt="プロフィール写真" class="w-40 h-40 rounded-full object-cover shadow-xl border-4 border-blue-400 md:mr-8 md:mb-0 mb-4">
+            <div class="flex-1">
+                <h1 class="text-4xl font-extrabold text-blue-400 mb-2">川口 拓郎</h1>
+                <p class="text-xl font-light text-gray-300 mb-4">Takuro Kawaguchi - ゲームプログラマー</p>
+               <div class="bg-black text-white p-4 rounded-md">
+                    <p class="text-base">
+                        専門学校でC#とUnityを、独学ではJavaScript、Python、BlenderやGIMPなど多岐にわたるツールを経験し、そしてC++とUnreal Engineで3D謎解きゲームを自主開発いたしました。様々な課題を乗り越えてゲーム開発への情熱を確信することができました。今後は、チーム開発に貢献できるプログラマーとして活躍したいと考えています。
+                    </p>
+                </div>
+                <div class="mt-4 text-gray-500 text-sm space-y-1">
+                    <p>最終学歴: 専門学校 (ゲーム開発学科) 中退</p>
+                </div>
+            </div>
         </header>
 
-        <!-- Table of Contents Section -->
-        <section class="section table-of-contents">
-            <h2 class="section-title">目次</h2>
-            <ul>
-                <li><a href="開発資料について.html">開発資料について</a></li>
-                <li><a href="#game-introduction">1. ゲーム紹介・プロジェクト概要</a></li>
-                <li><a href="#item-introduction-1">2-1 アイテム紹介 その1</a></li>
-                <li><a href="#item-introduction-2">2-2 アイテム紹介 その2</a></li>
-                <li><a href="#game-video">ゲーム紹介動画</a></li>
-                <li><a href="#library-list">ライブラリ一覧：演出・物理・ユーティリティ編</a></li>
-                <li><a href="#modules-used">利用したモジュールについて</a></li>
-                <li><a href="#example-code">ライブラリ一覧：演出・物理・ユーティリティ編 (主な使用例コード付き)</a></li>
-            </ul>
-        </section>
+        <div class="main-content">
+            <div class="left-panel">
+                <section class="section">
+                    <h2 class="section-title">ABOUT ME <span class="text-base text-gray-400 ml-2">わたしについて</span></h2>
+                    <div class="text-gray-300 leading-relaxed text-sm md:text-base space-y-3">
+                        <p>
+                            専門学校でゲーム開発の基礎を学んでいましたが、中退後、独学でC++やUnreal Engine 5の習得に励みました。技術的な苦労や精神的な葛藤もありましたが、ゲーム開発への情熱を原動力に、乗り越えてきました。
+                        </p>
+                        <p>
+                            特に、**Unreal Engine の「`could not be compiled`」エラー**や、**Visual Studio のワークロード設定**に何度も躓きましたが、自分で徹底的に調べ、解決策を見つけ出す粘り強さを身につけました。
+                        </p>
+                        <p>
+                            このポートフォリオは、私の「**調べる力**」「**問題を解決する力**」、そして何より「**開発を最後までやり抜く力**」の証明です。将来的には、数学のスキルも磨きながら、ゲーム開発を通して人々に驚きと感動を届けたいと考えています。
+                        </p>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">SKILLS <span class="text-base text-gray-400 ml-2">技術スタック</span></h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="skill-item">
+                            <div class="skill-icon bg-cpp">C++</div>
+                            <div>
+                                <h4 class="font-semibold">C++ <span class="text-xs text-gray-400">（2年）</span></h4>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon bg-cs">C#</div>
+                            <div>
+                                <h4 class="font-semibold">C# <span class="text-xs text-gray-400">（4年）</span></h4>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon bg-py">Py</div>
+                            <div>
+                                <h4 class="font-semibold">Python <span class="text-xs text-gray-400">（2年）</span></h4>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon bg-js">JS</div>
+                            <div>
+                                <h4 class="font-semibold">JavaScript <span class="text-xs text-gray-400">（1年）</span></h4>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon bg-ue">UE</div>
+                            <div>
+                                <h4 class="font-semibold">Unreal Engine</h4>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon bg-unity">Unty</div>
+                            <div>
+                                <h4 class="font-semibold">Unity <span class="text-xs text-gray-400">（4年）</span></h4>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon bg-blender">Bln</div>
+                            <div>
+                                <h4 class="font-semibold">Blender</h4>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon bg-gimp">GIMP</div>
+                            <div>
+                                <h4 class="font-semibold">GIMP / Canva</h4>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon bg-vsc">VSCode</div>
+                            <div>
+                                <h4 class="font-semibold">Visual Studio Code <span class="text-xs text-gray-400">（4年）</span></h4>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon bg-vs">VS</div>
+                            <div>
+                                <h4 class="font-semibold">Visual Studio <span class="text-xs text-gray-400">（4年）</span></h4>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon bg-git">Git</div>
+                            <div>
+                                <h4 class="font-semibold">GitHub / SourceTree <span class="text-xs text-gray-400">（3年）</span></h4>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon bg-office">Office</div>
+                            <div>
+                                <h4 class="font-semibold">Office製品</h4>
+                                <p class="text-xs text-gray-400">Excel（8年）、PowerPoint（8年）、Word（5年）</p>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon bg-vba">VBA</div>
+                            <div>
+                                <h4 class="font-semibold">VBA・マクロ</h4>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon bg-video">Vid</div>
+                            <div>
+                                <h4 class="font-semibold">動画・音源編集</h4>
+                                <p class="text-xs text-gray-400">MoviStudio13, VideoProc Vlogger, DPS Action, Wavosaur</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
 
-        <!-- Game Introduction Section -->
+            <div class="right-panel">
+                <section class="section">
+                    <h2 class="section-title">WORK EXPERIENCE <span class="text-base text-gray-400 ml-2">経歴</span></h2>
+                    <div class="relative pl-6 border-l-4 border-gray-600">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <p class="text-sm text-gray-400">2012年4月~2015年3月</p>
+                            <h3 class="font-bold text-blue-300 text-lg">2012年4月 私立鹿児島情報高等学校自動車工学科 入学</h3>
+                            <p class="text-gray-300 text-sm">2015年3月 同校 卒業</p>
+                            <p class="text-gray-300 text-sm">2013年6月 わっぜか本舗 イオンモール鹿児島店 アルバイト勤務開始</p>
+                            <p class="text-gray-300 text-sm">2015年1月 同社 退職</p>
+                            <p class="text-gray-300 text-sm">2015年2月 日本ケンタッキー・フライド・チキン株式会社 イオンモール鹿児島店<br> アルバイト勤務開始</p>
+                        </div>
+                          <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <p class="text-sm text-gray-400">2015年4月~2019年2月</p>
+                            <h3 class="font-bold text-blue-300 text-lg">2015年4月 私立鹿児島情報高等学校自動車専攻科 入学</h3>
+                            <p class="text-gray-300 text-sm">2016年9月 同校 中途退学</p>
+                            <p class="text-gray-300 text-sm">2019年1月 日本ケンタッキー・フライド・チキン株式会社 イオンモール鹿児島店<br> アルバイト勤務開始 </p>
+                            <p class="text-gray-300 text-sm">2019年2月 東宝総合警備保障株式会社 アルバイト勤務開始</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <p class="text-sm text-gray-400">2019年4月~2022年9月</p>
+                            <h3 class="font-bold text-blue-300 text-lg">2019年4月 バンタンゲームアカデミー東京校ゲーム学部ゲームプログラム総合学科　入学</h3>
+                            <p class="text-gray-300 text-sm">2021年7月 同校　休学</p>
+                            <p class="text-gray-300 text-sm">2021年8月 オリックス自動車株式会社 オリックスレンタカー新宿西口店 アルバイト勤務開始</p>
+                            <p class="text-gray-300 text-sm">2021年10月 東宝総合警備保障株式会社 退職</p>
+                            <p class="text-gray-300 text-sm">2022年9月 オリックス自動車株式会社 オリックスレンタカー新宿西口店 退職</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <p class="text-sm text-gray-400">2023年3月</p>
+                            <h3 class="font-bold text-blue-300 text-lg">2023年3月 バンタンゲームアカデミー東京校ゲーム学部ゲームプログラム総合学科　中途退学</h3>
+                            <p class="text-gray-300 text-sm">経済的な理由により中途退学。</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <p class="text-sm text-gray-400">時系列ズレますが、2022年9月 - 2024年7月</p>
+                            <h3 class="font-bold text-blue-300 text-lg">精神疾患により休職、独学でC#、Unityでゲームプログラミング学習</h3>
+                            </p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <p class="text-sm text-gray-400">2024年8月～2025年1月</p>
+                            <h3 class="font-bold text-blue-300 text-lg">2024年8月~ 就労移行支援事業所 Kaienに通所開始</h3>
+                            <p class="text-gray-300 text-sm">2024年8月 基本的な職業訓練（グループで資料作成、発表など） </p>
+                           <p class="text-gray-300 text-sm">2024年9月 1ヵ月職業体験、IT登竜門参加<br>（プログラマ・Webデザイナ・インフラエンジニア・DXエンジニア） </p>
+                            <p class="text-gray-300 text-sm">2024年10月 Excelの基本課題取り組み（AVERAGEIF・COUNTIF・XLOOKUP・VLOOKUPなど）</p>
+                            <p class="text-gray-300 text-sm">2024年11月 マクロ・VBA</p>
+                            <p class="text-gray-300 text-sm">2024年11月 C++基本学習(Udemy)</p>
+                            <p class="text-gray-300 text-sm">2024年12月 UnrealEngine基本操作学習(Udemy)</p>
+                            <p class="text-gray-300 text-sm">2025年1月 3Dゲーム「MysterySolvingDungeon」開発準備</p>
+                            </p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <p class="text-sm text-gray-400">2025年2月上旬～5月末</p>
+                            <h3 class="font-bold text-blue-300 text-lg">Unrealengine・C++を利用して、3D謎解きゲーム自主制作『MysterySolvingDungeon』開発</h3>
+                            <p class="text-gray-300 text-sm">プレイヤーの状態管理、オブジェクトのインタラクション、UI連携など、複雑なロジックをC++で実装。<br>デバッグやバグ修正に多くの時間を費やしたが、完成までやり遂げることができたました。</p>
+                            
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
         <section class="section" id="game-introduction">
-            <h2 class="section-title">1. ゲーム紹介・プロジェクト概要</h2>
+            <h2 class="section-title">1.🎮  ゲーム紹介・プロジェクト概要 </h2>
+            <h3 class="subsection-title">プロジェクト概要</h3>
             <p class="mb-4">
-                『MysterySolvingDungeon』は、プレイヤーが制限時間内に複数の謎を解き、銅像をゴールまで運ぶことを目的とした謎解きアクションゲームです。
-            </p>
-            <p class="mb-4">
-                本作は Unreal Engine 5 を使用し、謎解き条件やマップ構成にこだわって設計されています。
+                『MysterySolvingDungeon』は、プレイヤーが制限時間内に複数の謎を解き、銅像をゴールまで運ぶことを目的とした3D謎解きアクションゲームです。
+                Unreal Engine 5 で制作し、C++で主要なゲームロジックを実装しました。
             </p>
             <h3 class="subsection-title">ゲームの主なギミック</h3>
             <ul class="list-disc list-inside space-y-1 ml-4">
-                <li>🔥 火を灯す／消すことで進行ルートが変化。</li>
-                <li>⏱️ 制限時間内に複数のステップを踏んでゴールを目指す。</li>
-                <li>🎨 特定の色のオブジェクトを正しい場所に配置してドアを開ける</li>
+                <li>🔥 **炎のギミック**: 火を灯す／消すことで進行ルートが変化。</li>
+                <li>⏱️ **タイムアタック**: 制限時間内に複数のステップを踏んでゴールを目指す。</li>
+                <li>🎨 **オブジェクト配置**: 特定の色の銅像を正しい台に配置してドアを開ける。</li>
             </ul>
             <p class="mt-4">
-                プレイヤーは 探索 🧭 と 論理思考 🧠 を駆使して、各ステージの攻略に挑みます。
+                プレイヤーは探索 🧭 と論理思考 🧠 を駆使して、各ステージの攻略に挑みます。
+                この作品は、2024年12月～2025年5月の学習・開発成果を形にしたものです。
             </p>
-            <p class="mt-4">
-                この作品は、2024年12月18日〜2025年1月24日までの学習成果を形にすることを目的として制作しました。制限時間は25分です。
-            </p>
-
-            <h3 class="subsection-title">プレイヤー層と想定クリア時間</h3>
+            
+            <h3 class="subsection-title">想定クリア時間</h3>
             <div class="table-container">
-                <table>
+                <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr>
-                            <th>プレイヤー層</th>
-                            <th>プレイ状況</th>
-                            <th>想定クリア時間</th>
+                        <tr class="bg-gray-700">
+                            <th class="p-4 border-b border-gray-600">プレイヤー層</th>
+                            <th class="p-4 border-b border-gray-600">プレイ状況</th>
+                            <th class="p-4 border-b border-gray-600">想定クリア時間</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>制作者・ベテラン</td>
-                            <td>最適ルート・謎解き内容を全て把握済み</td>
-                            <td>約20分</td>
+                        <tr class="hover:bg-gray-700">
+                            <td class="p-4 border-b border-gray-600">制作者・ベテラン</td>
+                            <td class="p-4 border-b border-gray-600">最適ルート・謎解き内容を全て把握済み</td>
+                            <td class="p-4 border-b border-gray-600">約20分</td>
                         </tr>
-                        <tr>
-                            <td>中級プレイヤー</td>
-                            <td>過去に類似ゲーム経験あり</td>
-                            <td>約23〜25分 (ギリギリ)</td>
+                        <tr class="hover:bg-gray-700">
+                            <td class="p-4 border-b border-gray-600">中級プレイヤー</td>
+                            <td class="p-4 border-b border-gray-600">過去に類似ゲーム経験あり</td>
+                            <td class="p-4 border-b border-gray-600">約23〜25分 (ギリギリ)</td>
                         </tr>
-                        <tr>
-                            <td>初見プレイヤー</td>
-                            <td>ゲーム・謎解きともに初挑戦</td>
-                            <td>30〜45分ほど</td>
+                        <tr class="hover:bg-gray-700">
+                            <td class="p-4 border-b border-gray-600">初見プレイヤー</td>
+                            <td class="p-4 border-b border-gray-600">ゲーム・謎解きともに初挑戦</td>
+                            <td class="p-4 border-b border-gray-600">30〜45分ほど</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="note mt-6">
-                <p><strong>Note:</strong> このプロジェクトの詳細は、GitHubでもご確認いただけます。</p>
-                <a href="https://github.com/taku37817/MysterySolving" target="_blank" class="github-link">
-                    GitHubリポジリを見る
-                </a>
+                <div class="note mt-6">
+                    <p class="text-lg font-semibold text-blue-400">プロジェクトの全貌はこちらから！</p>
+                    <p class="mb-2">
+                        このプロジェクトのコードや詳細な開発ドキュメントは、GitHubで公開しています。
+                        私の「調べる力」「問題を解決する力」をより詳しく見ていただけます！
+                    </p>
+                    <a href="https://github.com/taku37817/MysterySolving" target="_blank" class="inline-block bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                        GitHubリポジトリを見る
+                    </a>
+                    <p class="mt-2 text-sm text-gray-500">※GitHubで「taku37817/MysterySolving」と検索してもアクセス可能です。</p>
+                </div>
                 <p class="mt-2 text-sm">「taku37817/MysterySolving」で検索可能です。</p>
             </div>
         </section>
 
-        <!-- Item Introduction Section -->
-        <section class="section" id="item-introduction-1">
-            <h2 class="section-title">2-1 アイテム紹介 その1</h2>
+        <section class="section" id="item-introduction">
+            <h2 class="section-title">アイテム紹介</h2>
             <p class="mb-4">
-                以下の3種のアイテムは、右側の石ゲートを開閉するために使用されます。
+                ゲーム内の主要アイテムと、それらが果たす役割について紹介します。
             </p>
             <div class="image-gallery">
-                <!-- ローカルパスの画像はウェブ上では表示されません。代わりに代替テキストが表示されます。 -->
                 <img src="Image/アイテム紹介(スイッチ関連).png" alt="アイテム紹介（スイッチ関連）の画像">
+                <img src="Image/アイテム紹介(カギ・ロウソク).png" alt="アイテム紹介（カギ・ロウソク）の画像">
             </div>
-
-
-        </section>
-
-        <section class="section" id="item-introduction-2">
-            <h2 class="section-title">2-2 アイテム紹介 その2</h2>
-            <div class="image-gallery">
-                <!-- ローカルパスの画像はウェブ上では表示されません。代わりに代替テキストが表示されます。 -->
-                <img src="Image/アイテム紹介(スイッチ関連).png" alt="アイテム紹介（カギ・ロウソク）の画像">
-            </div>
-        </section>
-
-
-        <!-- Game Play Video Section -->
-        <section class="section" id="game-video">
-            <h3 class="section-title">ゲーム紹介動画</h3>
-         <p class="mb-4" style="font-size: 1.5em;">動画の時間は3:33となります。<span style="color: red;">※音量に注意してください！</span></p>
-           <video src= "Movie/3D Game MysterySolvingDungeon ゲーム紹介（仮）.mp4" controls></video>
+            <p class="note mt-6 text-red-400">
+                <strong>※重要：</strong> 上記の画像はローカルパスのため、ウェブ上では表示されません。ご自身のウェブサーバーに画像をアップロードし、パスを修正してください。
             </p>
         </section>
 
-        <!-- Used Modules Section -->
+        <section class="section" id="game-video">
+            <h2 class="section-title">ゲーム紹介動画</h2>
+            <p class="mb-4 text-xl">動画時間：3分33秒 <span class="text-red-400">※音量に注意してください！</span></p>
+            <div class="video-container">
+                <video src="Movie/3D Game MysterySolvingDungeon ゲーム紹介（仮）.mp4" controls class="w-full"></video>
+            </div>
+        </section>
+
         <section class="section" id="modules-used">
-            <h2 class="section-title">利用したモジュールについて</h2>
+            <h2 class="section-title">実装技術の詳細</h2>
+            <h3 class="subsection-title">利用したモジュール (Build.cs)</h3>
             <p class="mb-4">
-                こちらは、実際に使用モジュールを登録したときのコード (Build.cs) です。
+                プロジェクトで使用したUnreal Engineの主要なモジュール一覧です。
             </p>
             <div class="code-block">
                 <pre><code>PublicDependencyModuleNames.AddRange(new string[] {
@@ -284,169 +428,90 @@
 });</code></pre>
             </div>
             <div class="table-container">
-                <table>
+                <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr>
-                            <th>モジュール名</th>
-                            <th>説明</th>
-                            <th>実際に使った例(用途)</th>
+                        <tr class="bg-gray-700">
+                            <th class="p-4 border-b border-gray-600">モジュール名</th>
+                            <th class="p-4 border-b border-gray-600">説明</th>
+                            <th class="p-4 border-b border-gray-600">主な用途</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Core</td>
-                            <td>UEの基本型やマクロなどを含む最小構成ライブラリ</td>
-                            <td>全てのC++クラスで基礎的に使用</td>
+                        <tr class="hover:bg-gray-700">
+                            <td class="p-4 border-b border-gray-600">Core</td>
+                            <td class="p-4 border-b border-gray-600">UEの基本型やマクロを含む最小構成ライブラリ</td>
+                            <td class="p-4 border-b border-gray-600">全てのC++クラスで基礎的に使用</td>
                         </tr>
-                        <tr>
-                            <td>CoreUObject</td>
-                            <td>UObjectやGC、リフレクションなどを提供</td>
-                            <td>アクターの継承やオブジェクト生成で使用</td>
+                        <tr class="hover:bg-gray-700">
+                            <td class="p-4 border-b border-gray-600">CoreUObject</td>
+                            <td class="p-4 border-b border-gray-600">UObjectやGC、リフレクションなどを提供</td>
+                            <td class="p-4 border-b border-gray-600">アクターの継承やオブジェクト生成で使用</td>
                         </tr>
-                        <tr>
-                            <td>Engine</td>
-                            <td>アクター・ワールド・コンポーネント等の主要機能</td>
-                            <td>アクター生成・移動・Tick処理などで使用</td>
+                        <tr class="hover:bg-gray-700">
+                            <td class="p-4 border-b border-gray-600">Engine</td>
+                            <td class="p-4 border-b border-gray-600">アクター・ワールド・コンポーネント等の主要機能</td>
+                            <td class="p-4 border-b border-gray-600">アクター生成・移動・Tick処理で使用</td>
                         </tr>
-                        <tr>
-                            <td>InputCore</td>
-                            <td>入力制御全般(バインド、マッピング)</td>
-                            <td>キー入力処理 (マウス左クリックorEキーで持つ・離す)</td>
+                        <tr class="hover:bg-gray-700">
+                            <td class="p-4 border-b border-gray-600">InputCore</td>
+                            <td class="p-4 border-b border-gray-600">入力制御全般 (バインド、マッピング)</td>
+                            <td class="p-4 border-b border-gray-600">キー入力処理 (マウス左クリック or Eキーで持つ・離す)</td>
                         </tr>
-                        <tr>
-                            <td>HeadMounted Display</td>
-                            <td>VR/AR向けHMDデバイス制御用</td>
-                            <td>将来的な拡張を見越して追加</td>
+                        <tr class="hover:bg-gray-700">
+                            <td class="p-4 border-b border-gray-600">HeadMounted Display</td>
+                            <td class="p-4 border-b border-gray-600">VR/AR向けHMDデバイス制御用</td>
+                            <td class="p-4 border-b border-gray-600">将来的な拡張を見越して追加</td>
                         </tr>
-                        <tr>
-                            <td>UMG</td>
-                            <td>ユーザーインターフェース構築用</td>
-                            <td>音量スライダーやヒントUIの作成</td>
+                        <tr class="hover:bg-gray-700">
+                            <td class="p-4 border-b border-gray-600">UMG</td>
+                            <td class="p-4 border-b border-gray-600">ユーザーインターフェース構築用</td>
+                            <td class="p-4 border-b border-gray-600">音量スライダーやヒントUIの作成</td>
                         </tr>
-                        <tr>
-                            <td>PhysicsCore</td>
-                            <td>物理演算(剛体、衝突)のベース機能</td>
-                            <td>像の落下判定・衝突判定処理</td>
+                        <tr class="hover:bg-gray-700">
+                            <td class="p-4 border-b border-gray-600">PhysicsCore</td>
+                            <td class="p-4 border-b border-gray-600">物理演算(剛体、衝突)のベース機能</td>
+                            <td class="p-4 border-b border-gray-600">像の落下判定・衝突判定処理</td>
                         </tr>
-                        <tr>
-                            <td>Niagara</td>
-                            <td>高性能VFX(Niagara)を扱うための機能群</td>
-                            <td>銅像配置時の光の演出に使用</td>
+                        <tr class="hover:bg-gray-700">
+                            <td class="p-4 border-b border-gray-600">Niagara</td>
+                            <td class="p-4 border-b border-gray-600">高性能VFXを扱うための機能群</td>
+                            <td class="p-4 border-b border-gray-600">銅像配置時の光の演出に使用</td>
                         </tr>
-                        <tr>
-                            <td>Slate</td>
-                            <td>低レベルUI構築フレームワーク (UMGの基礎)</td>
-                            <td>UIカスタム処理用に内部で必要</td>
+                        <tr class="hover:bg-gray-700">
+                            <td class="p-4 border-b border-gray-600">Slate</td>
+                            <td class="p-4 border-b border-gray-600">低レベルUI構築フレームワーク (UMGの基礎)</td>
+                            <td class="p-4 border-b border-gray-600">UIカスタム処理用に内部で必要</td>
                         </tr>
-                        <tr>
-                            <td>SlateCore</td>
-                            <td>Slate フレームワークの基礎モジュール</td>
-                            <td>同上(内部依存として使用)</td>
+                        <tr class="hover:bg-gray-700">
+                            <td class="p-4 border-b border-gray-600">SlateCore</td>
+                            <td class="p-4 border-b border-gray-600">Slateフレームワークの基礎モジュール</td>
+                            <td class="p-4 border-b border-gray-600">同上 (内部依存として使用)</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </section>
-
-
-<!-- Library List Section -->
-        <section class="section" id="library-list">
-            <h2 class="section-title">ライブラリ一覧③：演出・物理・ユーティリティ編（使用したライブラリ、41中11ご紹介）</h2>
-	　　
-	<a href= "https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#3-%EF%B8%8F-%E4%BD%BF%E7%94%A8%E6%8A%80%E8%A1%93%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB-%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E4%B8%80%E8%A6%A7%E3%82%B3%E3%83%BC%E3%83%89%E7%B4%B9%E4%BB%8B%E3%81%82%E3%82%8A" target="_blank" style="color: #3366cc;">ライブラリの詳細はこちらからご確認いただけます。</a>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>カテゴリ</th>
-                            <th>インクルード</th>
-                            <th>用途・説明</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>アニメーション・VFX</td>
-                            <td>Animation/AnimInstance.h</td>
-                            <td>スケルタルメッシュのアニメ制御クラス</td>
-                        </tr>
-                        <tr>
-                            <td>アニメーション・VFX</td>
-                            <td>Niagara Component.h</td>
-                            <td>Niagara VFX用のコンポーネント</td>
-                        </tr>
-                        <tr>
-                            <td>アニメーション・VFX</td>
-                            <td>Niagara FunctionLibrary.h</td>
-                            <td>Niagaraエフェクトの生成・制御用関数群</td>
-                        </tr>
-                        <tr>
-                            <td>アニメーション・VFX</td>
-                            <td>Particles/ParticleSystemComponent.h</td>
-                            <td>Cascade系パーティクル用コンポーネント</td>
-                        </tr>
-                        <tr>
-                            <td>物理制御</td>
-                            <td>PhysicsEngine/PhysicsHandleComponent.h</td>
-                            <td>オブジェクトのつかみ・移動制御用ハンドル</td>
-                        </tr>
-                        <tr>
-                            <td>Kismet(便利機能)</td>
-                            <td>Kismet/GameplayStatics.h</td>
-                            <td>レベル遷移、音再生、アクター取得などのユーティリティ</td>
-                        </tr>
-                        <tr>
-                            <td>Kismet(便利機能)</td>
-                            <td>Kismet/KismetSystemLibrary.h</td>
-                            <td>システムレベルのユーティリティ (ログ出力など)</td>
-                        </tr>
-                        <tr>
-                            <td>エンジン関連</td>
-                            <td>Engine/World.h</td>
-                            <td>ワールド取得、アクター生成などに使用</td>
-                        </tr>
-                        <tr>
-                            <td>エンジン関連</td>
-                            <td>EngineUtils.h</td>
-                            <td>アクター検索・ループなどのユーティリティ</td>
-                        </tr>
-                        <tr>
-                            <td>サウンド・アセット関連</td>
-                            <td>Sound/SoundBase.h</td>
-                            <td>サウンドデータの基本クラス (BGM/SE)</td>
-                        </tr>
-                        <tr>
-                            <td>サウンド・アセット関連</td>
-                            <td>UObject/ConstructorHelpers.h</td>
-                            <td>アセット参照取得(Constructor時など)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-
-
-        <!-- Example Code Section -->
-        <section class="section" id="example-code">
-            <h2 class="section-title">ライブラリ一覧③：演出・物理・ユーティリティ編 (主な使用例コード付き)</h2>
+            
+            <h3 class="subsection-title mt-8">主要なC++コードと実装解説</h3>
             <p class="mb-4">
-                「Niagara Component関連」のライブラリを使用した実際のコード一部をピックアップしました。詳細は隣のリンクからご確認できます。GitHub 「taku37817/MysterySolving」(検索可能)です。
+                プロジェクトの中核となるC++コードの一部を抜粋して解説します。
+                コード全体はGitHubでご確認いただけます。
             </p>
-            <h3 class="subsection-title">Niagara Componentの処理例</h3>
-            <p class="mb-4">
-                CandlEerase Function() 内で UNiagara Component を取得し、SetVisibility() によりロウソクの炎を点火/消火で切り替える演出を実装しています。
+            
+            <p class="mb-2"><strong>`NiagaraComponent` を使用した演出の例</strong></p>
+            <p class="mb-4 text-sm text-gray-400">
+                `CandlEerase()` 関数内で `UNiagaraComponent` を取得し、`SetVisibility()` を使ってロウソクの炎の表示を切り替えています。
             </p>
-            <!-- ローカルパスの画像はウェブ上では表示されません。代替テキストが表示されます。 -->
             <img src="Image/NiagaraComponent 使用例.png" alt="NiagaraComponent 使用例 コードスニペットの画像" class="code-block" style="background-color: #2d2d2d;">
-
-            <h3 class="subsection-title">謎解き条件とプレイヤーの状態について</h3>
+            
+            <p class="mt-6 mb-2"><strong>謎解き条件とプレイヤーの状態管理</strong></p>
+            <p class="mb-4 text-sm text-gray-400">
+                複数の条件が揃った時にドアを開けるロジックや、プレイヤーが像を持っているかどうかの状態管理についてです。
+            </p>
             <ul class="list-disc list-inside space-y-2 ml-4 mb-4">
-                <li><strong class="text-white">multipleConditioDoorMover->isAllConditionsMet</strong>: すべての最終ステージ前の部屋の条件（例：銅像がすべて正しい台に置かれているか）が満たされているかを確認します。詳細については、GitHubリポジトリ内の <a href="https://github.com/taku37817/MysterySolving/blob/RestorationBranch/Source/MysterySolving/MultipleConditioDoorMover.cpp" target="_blank" class="text-blue-400 hover:underline">`Source/MysterySolving/MultipleConditionDoorMover.cpp`</a> の27行目から79行目をご参照ください。</li>
-                <li><strong class="text-white">grabberComponent->isBronzeStatueGrabbed</strong>: プレイヤーが現在、銅像を掴んでいるかどうかの状態を示します。</li>
+                <li><strong class="text-white">`multipleConditioDoorMover->isAllConditionsMet`</strong>: 最終ステージ前の部屋の条件（例：銅像がすべて正しい台に置かれているか）が満たされているかをチェックします。詳細は <a href="https://github.com/taku37817/MysterySolving/blob/RestorationBranch/Source/MysterySolving/MultipleConditioDoorMover.cpp" target="_blank" class="text-blue-400 hover:underline">`MultipleConditionDoorMover.cpp`</a> の27～79行目をご覧ください。</li>
+                <li><strong class="text-white">`grabberComponent->isBronzeStatueGrabbed`</strong>: プレイヤーが現在、銅像を掴んでいるかどうかの状態を判定します。</li>
             </ul>
-
-            <h3 class="subsection-title">像を持っているか、または配置されているかの処理</h3>
-            <!-- ローカルパスの画像はウェブ上では表示されません。代替テキストが表示されます。 -->
-            <img src="Image/CandlEeraseFunctionの実際の使用について.png"" alt="CandlEeraseFunctionの実際の使用について コードスニペットの画像" class="code-block" style="background-color: #2d2d2d;">
+            <img src="Image/CandlEeraseFunctionの実際の使用について.png" alt="CandlEeraseFunctionの実際の使用について コードスニペットの画像" class="code-block" style="background-color: #2d2d2d;">
 
         </section>
 
