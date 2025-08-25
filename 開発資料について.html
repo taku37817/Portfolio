@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゲーム開発ドキュメント目次</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #90cdf4;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #63b3ed;
+        }
+        h2 {
+            color: #cbd5e0;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 5px solid #718096;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #cbd5e0;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #4a5568;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-left: 15px;
+        }
+        li {
+            margin-bottom: 4px;
+            padding: 3px 0;
+        }
+        li a {
+            color: #90cdf4;
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+        li a:hover {
+            color: #63b3ed;
+            text-decoration: underline;
+        }
+        .sub-list {
+            padding-left: 20px;
+            list-style: disc;
+        }
+        .sub-list li {
+            margin-bottom: 2px;
+        }
+        .section-content {
+            margin-top: 15px;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background-color: #2d3748;
+            border-left: 3px solid #718096;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #ffffff;
+        }
+        .section-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .note {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #2d3748;
+            border-left: 5px solid #a0aec0;
+            border-radius: 8px;
+            color: #ffffff;
+        }
+        .back-to-top {
+            display: block;
+            text-align: right;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            background-color: #000;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .back-to-top a {
+            color: #ffffff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        .back-to-top a:hover {
+            text-decoration: underline;
+        }
+        .back-to-top svg {
+            margin-right: 5px;
+        }
+        table {
+            border-color: #4a5568;
+        }
+        table thead tr {
+            background-color: #4a5568;
+        }
+        table th, table td {
+            border-color: #4a5568;
+            color: #ffffff;
+        }
+        .flex-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .flex-item {
+            flex: 1 1 45%;
+            min-width: 300px;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8">
+    <div class="container rounded-xl shadow-lg">
+        <h1 class="rounded-t-xl" id="top">ドキュメント目次</h1>
+
+        <section id="table-of-contents" class="mb-12 p-5 bg-blue-900 rounded-lg shadow-inner"> 
+            <h2 class="text-xl font-bold text-blue-300 mb-4 border-b pb-2 border-blue-600">概要</h2> 
+            <ul class="list-none p-0">
+                <li class="mb-2">
+                    <a href="#content-section1" class="text-lg font-medium text-blue-300 hover:text-blue-100">1. 企画書</a> 
+                    <ul class="sub-list mt-1">
+                        <li><a href="#content-section1-1">タイトル</a></li>
+                        <li><a href="#content-section1-2">ゲーム内容について</a></li>
+                        <li><a href="#content-section1-3">画面操作方法</a></li>
+                        <li><a href="#content-section1-4">謎解き要素①</a></li>
+                        <li><a href="#content-section1-5">謎解き要素②</a></li>
+                        <li><a href="#content-section1-6">謎解き要素③</a></li>
+                        <li><a href="#content-section1-7">謎解き要素④</a></li>
+                    </ul>
+                </li>
+                <li class="mb-2"><a href="#content-section2" class="text-lg font-medium text-blue-300 hover:text-blue-100">2. タイトル画面のフロー</a></li>
+                <li class="mb-2"><a href="#content-section-flow-group" class="text-lg font-medium text-blue-300 hover:text-blue-100">3. ゲーム画面 & クリア条件フロー</a></li>
+                <li class="mb-2"><a href="#content-section4" class="text-lg font-medium text-blue-300 hover:text-blue-100">4. 各謎解きの基本フロー</a></li>
+                <li class="mb-2"><a href="#content-section6" class="text-lg font-medium text-blue-300 hover:text-blue-100">5. DoorMover.h ドキュメントについて</a></li>
+                <li class="mb-2"><a href="#content-section7" class="text-lg font-medium text-blue-300 hover:text-blue-100">6. DoorMover.cpp ドキュメントについて</a></li>
+                <li class="mb-2"><a href="#content-section8" class="text-lg font-medium text-blue-300 hover:text-blue-100">7. テスト仕様書のご紹介（一部から抜粋）になります。</a></li>
+            </ul>
+        </section>
+
+        <hr class="my-10 border-gray-700"> 
+        <h2 class="text-3xl font-bold text-gray-200 mb-6">本編</h2> 
+        <section id="content-section1" class="mb-12">
+            <h2>1. 企画書</h2>
+            <div class="section-content">
+                
+                <h3 id="content-section1-1">タイトル</h3>
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+                <img src="開発資料/企画書の画像/[企画]Mystery Solving Dungeon 修正後_page-0002.jpg">
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+
+                <h3 id="content-section1-2">ゲーム内容について</h3>
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+                <img src="開発資料/企画書の画像/[企画]Mystery Solving Dungeon 修正後_page-0003.jpg.jpg">
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+                
+                <h3 id="content-section1-3">画面操作方法</h3>
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+                <img src="開発資料/企画書の画像/[企画]Mystery Solving Dungeon 修正後_page-0004.jpg">
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+
+                <h3 id="content-section1-4">謎解き要素①</h3>
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+                <img src="開発資料/企画書の画像/[企画]Mystery Solving Dungeon 修正後_page-0005.jpg">
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+
+                <h3 id="content-section1-5">謎解き要素②</h3>
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+                <img src="開発資料/企画書の画像/[企画]Mystery Solving Dungeon 修正後_page-0006.jpg">
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+
+                <h3 id="content-section1-6">謎解き要素③</h3>
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+                <img src="開発資料/企画書の画像/[企画]Mystery Solving Dungeon 修正後_page-0007.jpg">
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+                
+                <h3 id="content-section1-7">謎解き要素④</h3>
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+                <img src="開発資料/企画書の画像/[企画]Mystery Solving Dungeon 修正後_page-0008.jpg">
+            </div>
+            <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+        </section>
+
+        <hr class="my-10 border-gray-700">
+
+        <section id="content-section2" class="mb-12">
+
+            <h2>2. タイトル画面のフロー</h2>
+            <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+            <div class="section-content">
+                <img src="開発資料/タイトル画面フロー.jpg">
+            </div>
+            <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+        </section>
+
+        <hr class="my-10 border-gray-700">
+
+        <h2 class="text-3xl font-bold text-gray-200 mb-6">3. ゲーム画面 & クリア条件フロー</h2>
+        <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+        <div class="flex-container mb-12" id="content-section-flow-group">
+            
+            <section id="content-section3" class="flex-item">
+                <h2>3. ゲーム画面の基本進行フロー</h2>
+                <div class="section-content">
+                    <img src="開発資料/ゲーム画面フロー.png">
+                </div>
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+            </section>
+            
+            <section id="content-section5" class="flex-item">
+                <h2>クリア条件のフロー</h2>
+                <div class="section-content">
+                    <img src="開発資料/クリア条件フロー.jpg">
+                </div>
+                <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+            </section>
+
+        </div>
+
+        <hr class="my-10 border-gray-700">
+
+        <section id="content-section4" class="mb-12">
+            <h2>4. 各謎解きの基本フロー</h2>
+            <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+            <div class="section-content">
+                <img src="開発資料/謎解きフロー.jpg">
+            </div>
+            <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+        </section>
+
+        <hr class="my-10 border-gray-700">
+
+        <section id="content-section6" class="mb-12">
+            <h2>5. DoorMover.h ドキュメントについて</h2>
+            <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+            <div class="section-content">
+                <img src="開発資料/3DMysterySolvingDungeonドキュメント(変数).jpg">
+            <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+        </section>
+
+        <hr class="my-10 border-gray-700">
+
+        <section id="content-section7" class="mb-12">
+            <h2>6. DoorMover.cpp ドキュメントについて</h2>
+            <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+            <div class="section-content">
+                <img src="開発資料/3DMysterySolvingDungeonドキュメント(関数や、活用例).jpg">
+            <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+        </section>
+
+        <hr class="my-10 border-gray-700">
+
+        <section id="content-section8" class="mb-12">
+            <h2>7. テスト仕様書のご紹介（一部から抜粋）になります。</h2>
+            <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+            <div class="section-content">
+                <img src="開発資料/テスト仕様書一部のスクリーンショット.png">
+            <div class="back-to-top"><a href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg>目次に戻る</a></div>
+        </section>
+    </div>
+</body>
+</html>
